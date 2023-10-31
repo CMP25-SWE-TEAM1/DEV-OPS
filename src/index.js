@@ -28,7 +28,68 @@ redisClient.connect().then(()=>console.log("Success with Redis")).catch((err)=>c
 
 app.get('/',(req,res)=>{
     redisClient.set("Product","NginX")
-    res.send("<h1>Hello there : hola    !</h1>")
+    res.send(`<html>
+    <head>
+      <style>
+        @keyframes buttonAnimation {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+          100% { transform: scale(1); }
+        }
+
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background-color: #BFEFFF;
+        }
+
+        button {
+          animation: buttonAnimation 2s infinite;
+          padding: 20px 40px;
+          font-size: 24px;
+          color: white;
+          background: linear-gradient(to bottom right, #2980b9, #3498db);
+          border: none;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+          cursor: pointer;
+        }
+
+        button:hover {
+          transform: scale(1.05);
+          transition: transform 0.2s ease-in-out;
+        }
+
+        p {
+          font-size: 48px;
+          opacity: 0;
+          animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+          0% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+      </style>
+    </head>
+    <body>
+      <button onclick="showMessage()" id="button">
+        Click here if you are manly enough
+      </button>
+      <script>
+        function showMessage() {
+          const button = document.getElementById('button');
+          button.style.display = 'none';
+
+          const message = document.createElement('p');
+          message.textContent = 'You are beautiful';
+          document.body.appendChild(message);
+        }
+      </script>
+    </body>
+  </html>`)
 })
 
 
