@@ -1,1 +1,1 @@
-# DEV-OPS
+# Managing Gigachat's operations :)
