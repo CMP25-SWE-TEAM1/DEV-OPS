@@ -1,0 +1,10 @@
+version: '3'
+services:
+  gigachat-react-app:
+    container_name: gigachat-frontend-container
+    image: amreux1/my_public_registry
+    build: 
+      context: .
+      target: development
+    ports:
+    - "5500:3000"
